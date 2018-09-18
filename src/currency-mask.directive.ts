@@ -38,7 +38,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
         isIonic:false
     };
 
-    constructor(@Optional() @Inject(CURRENCY_MASK_CONFIG) private currencyMaskConfig: CurrencyMaskConfig, private elementRef: ElementRef, private keyValueDiffers: KeyValueDiffers) {
+    constructor(@Optional() @Inject(CURRENCY_MASK_CONFIG) private currencyMaskConfig: CurrencyMaskConfig, private elementRef: ElementRef, private keyValueDiffers: KeyValueDiffers, private ngModel: NgModel) {
         if (currencyMaskConfig) {
             this.optionsTemplate = currencyMaskConfig;
         }
@@ -90,6 +90,9 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     handleBlur(event: any) {
         if(this.isIonic){
             console.log(event);
+            console.log(this.ngModel);
+            console.log(this.inputHandler.getValue());
+            this.ngModel.update.emit(this.inputHandler.getValue());
         }else{
             this.inputHandler.getOnModelTouched().apply(event);
         }

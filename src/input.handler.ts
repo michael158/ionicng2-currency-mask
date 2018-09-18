@@ -189,6 +189,11 @@ export class InputHandler {
         this.inputService.value = value;
     }
 
+    getValue()
+    {
+        return this.inputService.value;
+    }
+
     private getNewKeyCode(oldString: string, newString: string): number {
         if (oldString.length > newString.length) {
             return null;
