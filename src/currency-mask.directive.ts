@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, DoCheck, ElementRef, forwardRef, HostListener, Inject, KeyValueDiffer, KeyValueDiffers, Input, OnInit, Optional ,Injector} from "@angular/core";
+import { AfterViewInit, Directive, DoCheck, ElementRef, forwardRef, HostListener, Inject, KeyValueDiffer, KeyValueDiffers, Input,Output, OnInit, Optional ,EventEmitter,Injector} from "@angular/core";
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator,NgModel } from "@angular/forms";
 
 import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from "./currency-mask.config";
@@ -22,7 +22,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     @Input() max: number;
     @Input() min: number;
     @Input() options: any = {};
-    @Input() ngModelMoney:any;
+    @Input('ngModelMoney') ngModelMoney:any;
 
     inputHandler: InputHandler;
     keyValueDiffer: KeyValueDiffer<any, any>;
@@ -97,7 +97,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
             console.log(this.inputHandler.getValue());
 
             console.log(event.target.value);
-            this.ngModelMoney.update.emit(this.inputHandler.getValue());
+            this.ngModelMoney.emit(this.inputHandler.getValue());
         }else{
             this.inputHandler.getOnModelTouched().apply(event);
         }
