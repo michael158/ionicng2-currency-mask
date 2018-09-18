@@ -95,7 +95,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
             console.log(event);
             console.log(this.ngModel);
             console.log(this.inputHandler.getValue());
-            this.ngModelMoneyChange.emit(this.inputHandler.getValue());
+            //this.ngModelMoneyChange.emit(this.inputHandler.getValue());
         }else{
             this.inputHandler.getOnModelTouched().apply(event);
         }
