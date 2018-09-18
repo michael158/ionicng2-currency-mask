@@ -129,10 +129,15 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     }
 
     registerOnChange(callbackFunction: Function): void {
+        console.log('register on change');
+        console.log(callbackFunction);
         this.inputHandler.setOnModelChange(callbackFunction);
     }
 
     registerOnTouched(callbackFunction: Function): void {
+        console.log('register on touched');
+        console.log(callbackFunction);
+
         this.inputHandler.setOnModelTouched(callbackFunction);
     }
 
