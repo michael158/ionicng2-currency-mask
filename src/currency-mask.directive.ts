@@ -110,7 +110,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     handleCut(event: any) {
         if (!this.isChromeAndroid()) {
             if(this.isIonic)
-                this.inputHandler.handleCut(event, this.ngModelMoney);
+                this.inputHandler.handleCut(event, this.ngModelMoneyChange);
             else
                 this.inputHandler.handleCut(event); 
         }
@@ -120,7 +120,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     handleInput(event: any) {
         if (this.isChromeAndroid()) {
             if(this.isIonic)
-                this.inputHandler.handleInput(event, this.ngModelMoney);
+                this.inputHandler.handleInput(event, this.ngModelMoneyChange);
             else    
                this.inputHandler.handleInput(event);
         }
@@ -130,7 +130,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     handleKeydown(event: any) {
         if (!this.isChromeAndroid()) {
             if(this.isIonic)
-                this.inputHandler.handleKeydown(event, this.ngModelMoney);
+                this.inputHandler.handleKeydown(event, this.ngModelMoneyChange);
             else    
                 this.inputHandler.handleKeydown(event); 
         }
@@ -140,7 +140,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     handleKeypress(event: any) {
         if (!this.isChromeAndroid()) {
             if(this.isIonic)
-                this.inputHandler.handleKeypress(event, this.ngModelMoney);
+                this.inputHandler.handleKeypress(event, this.ngModelMoneyChange);
             else
                 this.inputHandler.handleKeypress(event);
         }
@@ -157,7 +157,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     handlePaste(event: any) {
         if (!this.isChromeAndroid()) {
             if(this.isIonic)
-                this.inputHandler.handlePaste(event, this.ngModelMoney);
+                this.inputHandler.handlePaste(event, this.ngModelMoneyChange);
             else    
                 this.inputHandler.handlePaste(event);
         }
