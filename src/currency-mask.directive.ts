@@ -22,6 +22,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     @Input() max: number;
     @Input() min: number;
     @Input() options: any = {};
+    @Input() ngModelMoney:any;
 
     inputHandler: InputHandler;
     keyValueDiffer: KeyValueDiffer<any, any>;
@@ -96,8 +97,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
             console.log(this.inputHandler.getValue());
 
             console.log(event.target.value);
-
-            this.ngModel.update.emit(123);
+            this.ngModelMoney.update.emit(this.inputHandler.getValue());
         }else{
             this.inputHandler.getOnModelTouched().apply(event);
         }
@@ -112,7 +112,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     handleCut(event: any) {
         if (!this.isChromeAndroid()) {
             if(this.isIonic)
-                this.inputHandler.handleCut(event, this.ngModel);
+                this.inputHandler.handleCut(event, this.ngModelMoney);
             else
                 this.inputHandler.handleCut(event); 
         }
@@ -122,7 +122,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     handleInput(event: any) {
         if (this.isChromeAndroid()) {
             if(this.isIonic)
-                this.inputHandler.handleInput(event, this.ngModel);
+                this.inputHandler.handleInput(event, this.ngModelMoney);
             else    
                this.inputHandler.handleInput(event);
         }
@@ -132,7 +132,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     handleKeydown(event: any) {
         if (!this.isChromeAndroid()) {
             if(this.isIonic)
-                this.inputHandler.handleKeydown(event, this.ngModel);
+                this.inputHandler.handleKeydown(event, this.ngModelMoney);
             else    
                 this.inputHandler.handleKeydown(event); 
         }
@@ -142,7 +142,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     handleKeypress(event: any) {
         if (!this.isChromeAndroid()) {
             if(this.isIonic)
-                this.inputHandler.handleKeypress(event, this.ngModel);
+                this.inputHandler.handleKeypress(event, this.ngModelMoney);
             else
                 this.inputHandler.handleKeypress(event);
         }
@@ -159,7 +159,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     handlePaste(event: any) {
         if (!this.isChromeAndroid()) {
             if(this.isIonic)
-                this.inputHandler.handlePaste(event, this.ngModel);
+                this.inputHandler.handlePaste(event, this.ngModelMoney);
             else    
                 this.inputHandler.handlePaste(event);
         }
