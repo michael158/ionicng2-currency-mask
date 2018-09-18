@@ -31,7 +31,7 @@ export class InputHandler {
         setTimeout(() => {
             this.inputService.updateFieldValue();
             this.setValue(this.inputService.value);
-            this.onModelChange(this.inputServiceIonic.value);
+            //this.onModelChange(this.inputServiceIonic.value);
         }, 0);
     }
 
@@ -78,7 +78,7 @@ export class InputHandler {
         }
 
         this.setCursorPosition(event);
-        this.onModelChange(this.inputServiceIonic.value);
+        //this.onModelChange(this.inputServiceIonic.value);
     }
 
     handleKeydown(event: any): void {
@@ -94,17 +94,17 @@ export class InputHandler {
 
             if (selectionRangeLength == this.inputService.rawValue.length || this.inputService.value == 0) {
                 this.setValue(null);
-                this.onModelChange(this.inputServiceIonic.value);
+                //this.onModelChange(this.inputServiceIonic.value);
             }
 
             if (selectionRangeLength == 0 && !isNaN(this.inputService.value)) {
                 this.inputService.removeNumber(keyCode);
-                this.onModelChange(this.inputServiceIonic.value);
+                //this.onModelChange(this.inputServiceIonic.value);
             }
 
             if ((keyCode === 8 || keyCode === 46) && selectionRangeLength != 0 && !isNaN(this.inputService.value)) {
                 this.inputService.removeNumber(keyCode);
-                this.onModelChange(this.inputServiceIonic.value);
+                //this.onModelChange(this.inputServiceIonic.value);
             }
         }
     }
@@ -134,7 +134,7 @@ export class InputHandler {
         }
 
         event.preventDefault();
-        this.onModelChange(this.inputServiceIonic.value);
+        //this.onModelChange(this.inputServiceIonic.value);
     }
 
     handleKeyup(event: any): void {
@@ -149,7 +149,7 @@ export class InputHandler {
         setTimeout(() => {
             this.inputService.updateFieldValue();
             this.setValue(this.inputService.value);
-            this.onModelChange(this.inputServiceIonic.value);
+            //this.onModelChange(this.inputServiceIonic.value);
         }, 1);
     }
 
