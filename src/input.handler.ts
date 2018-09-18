@@ -215,6 +215,11 @@ export class InputHandler {
         return this.inputService.value;
     }
 
+    getMaskedValue()
+    {
+        return this.inputService.applyMask(true, this.inputService.value.toString());
+    }
+
     private getNewKeyCode(oldString: string, newString: string): number {
         if (oldString.length > newString.length) {
             return null;
