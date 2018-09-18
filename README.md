@@ -11,7 +11,7 @@ Note: This component is ready to AoC (Ahead-of-Time) compilation.
 Install the package by command:
 
 ```sh
-    npm install ionicng2-currency-mask --save
+    npm install ionic-currency-mask --save
 ```
 
 Import the module
