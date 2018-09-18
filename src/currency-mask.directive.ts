@@ -1,5 +1,5 @@
 import { AfterViewInit, Directive, DoCheck, ElementRef, forwardRef, HostListener, Inject, KeyValueDiffer, KeyValueDiffers, Input, OnInit, Optional } from "@angular/core";
-import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from "@angular/forms";
+import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator,NgModel } from "@angular/forms";
 
 import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from "./currency-mask.config";
 import { InputHandler } from "./input.handler";
@@ -88,11 +88,11 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
 
     @HostListener("blur", ["$event"])
     handleBlur(event: any) {
-
-        console.log(event);
-        console.log(this.inputHandler.getOnModelTouched());
-
-        this.inputHandler.getOnModelTouched().apply(event);
+        if(this.isIonic){
+            console.log(event);
+        }else{
+            this.inputHandler.getOnModelTouched().apply(event);
+        }
     }
 
     @HostListener("click", ["$event"])
@@ -147,15 +147,10 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     }
 
     registerOnChange(callbackFunction: Function): void {
-        console.log('register on change');
-        console.log(callbackFunction);
         this.inputHandler.setOnModelChange(callbackFunction);
     }
 
     registerOnTouched(callbackFunction: Function): void {
-        console.log('register on touched');
-        console.log(callbackFunction);
-
         this.inputHandler.setOnModelTouched(callbackFunction);
     }
 
