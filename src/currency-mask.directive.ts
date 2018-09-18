@@ -22,10 +22,10 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     @Input() max: number;
     @Input() min: number;
     @Input() options: any = {};
-    @Input() ngModel: any;
 
     inputHandler: InputHandler;
     keyValueDiffer: KeyValueDiffer<any, any>;
+    isIonic: any;
 
     optionsTemplate = {
         align: "right",
@@ -34,7 +34,8 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
         precision: 2,
         prefix: "$ ",
         suffix: "",
-        thousands: ","
+        thousands: ",",
+        isIonic:false
     };
 
     constructor(@Optional() @Inject(CURRENCY_MASK_CONFIG) private currencyMaskConfig: CurrencyMaskConfig, private elementRef: ElementRef, private keyValueDiffers: KeyValueDiffers) {
@@ -42,30 +43,47 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
             this.optionsTemplate = currencyMaskConfig;
         }
 
+
+
         this.keyValueDiffer = keyValueDiffers.find({}).create();
     }
 
     ngAfterViewInit() {
-        setTimeout(() => {
-            this.elementRef.nativeElement.children[0].style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
-        },0);
+        this.isIonic = this.options.isIonic ? this.options.isIonic : this.optionsTemplate.isIonic;
+        
+        if(this.isIonic){
+            setTimeout(() => {
+                this.elementRef.nativeElement.children[0].style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
+            },0);
+        }else{
+            this.elementRef.nativeElement.style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
+        }
     }
 
     ngDoCheck() {
         if (this.keyValueDiffer.diff(this.options)) {
-            setTimeout(() => {
-                this.elementRef.nativeElement.children[0].style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
+            if(this.isIonic){
+                setTimeout(() => {
+                    this.elementRef.nativeElement.children[0].style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
+                    this.inputHandler.updateOptions((<any>Object).assign({}, this.optionsTemplate, this.options));
+                },0);
+            }else{
+                this.elementRef.nativeElement.style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
                 this.inputHandler.updateOptions((<any>Object).assign({}, this.optionsTemplate, this.options));
-            },0);
+            }
         }
     }
 
     ngOnInit() {
-        setTimeout(() => {
-            console.log(this.elementRef.nativeElement)
-            console.log(this.elementRef.nativeElement.children[0]);
+        this.isIonic = this.options.isIonic ? this.options.isIonic : this.optionsTemplate.isIonic;
+
+        if(this.isIonic){
+            setTimeout(() => {
+                this.inputHandler = new InputHandler(this.elementRef.nativeElement.children[0], (<any>Object).assign({}, this.optionsTemplate, this.options));
+            },0)
+        }else{
             this.inputHandler = new InputHandler(this.elementRef.nativeElement, (<any>Object).assign({}, this.optionsTemplate, this.options));
-        },0)
+        }
     }
 
     @HostListener("blur", ["$event"])

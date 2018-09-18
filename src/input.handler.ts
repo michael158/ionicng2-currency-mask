@@ -8,7 +8,7 @@ export class InputHandler {
     private htmlInputElement: HTMLInputElement;
 
     constructor(htmlInputElement: HTMLInputElement, options: any) {
-        this.inputService = new InputService(htmlInputElement.children[0], options);
+        this.inputService = new InputService(htmlInputElement, options);
         this.htmlInputElement = htmlInputElement;
     }
 
