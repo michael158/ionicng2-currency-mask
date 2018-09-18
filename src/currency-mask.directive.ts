@@ -14,7 +14,8 @@ export const CURRENCYMASKDIRECTIVE_VALUE_ACCESSOR: any = {
     selector: "[currencyMask]",
     providers: [
         CURRENCYMASKDIRECTIVE_VALUE_ACCESSOR,
-        { provide: NG_VALIDATORS, useExisting: CurrencyMaskDirective, multi: true }
+        { provide: NG_VALIDATORS, useExisting: CurrencyMaskDirective, multi: true },
+        NgModel
     ]
 })
 export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccessor, DoCheck, OnInit, Validator {
