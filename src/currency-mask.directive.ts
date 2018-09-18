@@ -44,9 +44,6 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
             this.optionsTemplate = currencyMaskConfig;
         }
 
-        this.ngModel = this.injector.get(NgModel);
-
-
         this.keyValueDiffer = keyValueDiffers.find({}).create();
     }
 
@@ -78,6 +75,9 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
 
     ngOnInit() {
         this.isIonic = this.options.isIonic ? this.options.isIonic : this.optionsTemplate.isIonic;
+
+        this.ngModel = this.injector.get(NgModel);
+
 
         if(this.isIonic){
             setTimeout(() => {
