@@ -45,7 +45,10 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     }
 
     ngAfterViewInit() {
-        this.elementRef.nativeElement.children.style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
+        setTimeout(() => {
+            this.elementRef.nativeElement.children.style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
+        });
+
     }
 
     ngDoCheck() {
@@ -56,7 +59,9 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     }
 
     ngOnInit() {
-        this.inputHandler = new InputHandler(this.elementRef.nativeElement.children, (<any>Object).assign({}, this.optionsTemplate, this.options));
+        setTimeout(() => {
+            this.inputHandler = new InputHandler(this.elementRef.nativeElement.children, (<any>Object).assign({}, this.optionsTemplate, this.options));
+        })
     }
 
     @HostListener("blur", ["$event"])
