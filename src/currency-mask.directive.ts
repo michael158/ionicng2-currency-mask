@@ -22,7 +22,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     @Input() max: number;
     @Input() min: number;
     @Input() options: any = {};
-    @Input('ngModelMoney') ngModelMoney:any;
+    @Input() ngModelMoney:any;
 
     inputHandler: InputHandler;
     keyValueDiffer: KeyValueDiffer<any, any>;
@@ -76,7 +76,6 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
 
     ngOnInit() {
         this.isIonic = this.options.isIonic ? this.options.isIonic : this.optionsTemplate.isIonic;
-
         this.ngModel = this.injector.get(NgModel);
 
 
@@ -95,6 +94,8 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
             console.log(event);
             console.log(this.ngModel);
             console.log(this.inputHandler.getValue());
+            
+            console.log(this.ngModelMoney);
 
             console.log(event.target.value);
             this.ngModelMoney.emit(this.inputHandler.getValue());
