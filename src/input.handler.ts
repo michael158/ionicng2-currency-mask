@@ -3,12 +3,14 @@ import { InputService } from "./input.service";
 export class InputHandler {
 
     private inputService: InputService;
+    private inputServiceIonic: InputService;
     private onModelChange: Function;
     private onModelTouched: Function;
     private htmlInputElement: HTMLInputElement;
 
     constructor(htmlInputElement: HTMLInputElement, options: any) {
-        this.inputService = new InputService(htmlInputElement, options);
+        this.inputService = new InputService(htmlInputElement.children[0], options);
+        this.inputServiceIonic = new InputService(htmlInputElement, options);
         this.htmlInputElement = htmlInputElement;
     }
 
@@ -29,7 +31,7 @@ export class InputHandler {
         setTimeout(() => {
             this.inputService.updateFieldValue();
             this.setValue(this.inputService.value);
-            this.onModelChange(this.inputService.value);
+            this.onModelChange(this.inputServiceIonic.value);
         }, 0);
     }
 
@@ -76,7 +78,7 @@ export class InputHandler {
         }
 
         this.setCursorPosition(event);
-        this.onModelChange(this.inputService.value);
+        this.onModelChange(this.inputServiceIonic.value);
     }
 
     handleKeydown(event: any): void {
@@ -92,17 +94,17 @@ export class InputHandler {
 
             if (selectionRangeLength == this.inputService.rawValue.length || this.inputService.value == 0) {
                 this.setValue(null);
-                this.onModelChange(this.inputService.value);
+                this.onModelChange(this.inputServiceIonic.value);
             }
 
             if (selectionRangeLength == 0 && !isNaN(this.inputService.value)) {
                 this.inputService.removeNumber(keyCode);
-                this.onModelChange(this.inputService.value);
+                this.onModelChange(this.inputServiceIonic.value);
             }
 
             if ((keyCode === 8 || keyCode === 46) && selectionRangeLength != 0 && !isNaN(this.inputService.value)) {
                 this.inputService.removeNumber(keyCode);
-                this.onModelChange(this.inputService.value);
+                this.onModelChange(this.inputServiceIonic.value);
             }
         }
     }
@@ -132,7 +134,7 @@ export class InputHandler {
         }
 
         event.preventDefault();
-        this.onModelChange(this.inputService.value);
+        this.onModelChange(this.inputServiceIonic.value);
     }
 
     handleKeyup(event: any): void {
@@ -147,7 +149,7 @@ export class InputHandler {
         setTimeout(() => {
             this.inputService.updateFieldValue();
             this.setValue(this.inputService.value);
-            this.onModelChange(this.inputService.value);
+            this.onModelChange(this.inputServiceIonic.value);
         }, 1);
     }
 

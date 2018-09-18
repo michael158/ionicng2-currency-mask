@@ -63,7 +63,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
         setTimeout(() => {
             console.log(this.elementRef.nativeElement)
             console.log(this.elementRef.nativeElement.children[0]);
-            this.inputHandler = new InputHandler(this.elementRef.nativeElement.children[0], (<any>Object).assign({}, this.optionsTemplate, this.options));
+            this.inputHandler = new InputHandler(this.elementRef.nativeElement, (<any>Object).assign({}, this.optionsTemplate, this.options));
         },0)
     }
 
@@ -124,11 +124,11 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     }
 
     registerOnChange(callbackFunction: Function): void {
-        //this.inputHandler.setOnModelChange(callbackFunction);
+        this.inputHandler.setOnModelChange(callbackFunction);
     }
 
     registerOnTouched(callbackFunction: Function): void {
-        //this.inputHandler.setOnModelTouched(callbackFunction);
+        this.inputHandler.setOnModelTouched(callbackFunction);
     }
 
     setDisabledState(value: boolean): void {
