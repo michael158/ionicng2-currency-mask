@@ -1,6 +1,6 @@
 {
   "name": "ionicng2-currency-mask",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "A very simple currency mask directive that allows using a number attribute with the ngModel.",
   "scripts": {
     "prepublish": "ngc"
