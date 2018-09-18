@@ -131,20 +131,26 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     @HostListener("keydown", ["$event"])
     handleKeydown(event: any) {
         if (!this.isChromeAndroid()) {
-            this.inputHandler.handleKeydown(event);
+            if(this.isIonic)
+                this.inputHandler.handleKeydown(event, this.ngModel);
+            else    
+                this.inputHandler.handleKeydown(event); 
         }
     }
 
     @HostListener("keypress", ["$event"])
     handleKeypress(event: any) {
         if (!this.isChromeAndroid()) {
-            this.inputHandler.handleKeypress(event);
+            if(this.isIonic)
+                this.inputHandler.handleKeypress(event, this.ngModel);
+            else
+                this.inputHandler.handleKeypress(event);
         }
     }
 
     @HostListener("keyup", ["$event"])
     handleKeyup(event: any) {
-        if (!this.isChromeAndroid()) {
+        if (!this.isChromeAndroid()) {  
             this.inputHandler.handleKeyup(event);
         }
     }
@@ -152,7 +158,10 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     @HostListener("paste", ["$event"])
     handlePaste(event: any) {
         if (!this.isChromeAndroid()) {
-            this.inputHandler.handlePaste(event);
+            if(this.isIonic)
+                this.inputHandler.handlePaste(event, this.ngModel);
+            else    
+                this.inputHandler.handlePaste(event);
         }
     }
 
