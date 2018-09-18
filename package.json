@@ -1,13 +1,13 @@
 {
-  "name": "ng2-currency-mask",
-  "version": "5.3.1",
+  "name": "ionicng2-currency-mask",
+  "version": "1.0.0",
   "description": "A very simple currency mask directive that allows using a number attribute with the ngModel.",
   "scripts": {
     "prepublish": "ngc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cesarrew/ng2-currency-mask.git"
+    "url": "git+https://github.com/michael158/ionicng2-currency-mask"
   },
   "keywords": [
     "angular",
@@ -26,9 +26,9 @@
   "author": "César Mendonça",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cesarrew/ng2-currency-mask/issues"
+    "url": "https://github.com/michael158/ionicng2-currency-mask"
   },
-  "homepage": "https://github.com/cesarrew/ng2-currency-mask",
+  "homepage": "https://github.com/michael158/ionicng2-currency-mask",
   "devDependencies": {
     "@angular/common": "5.2.0",
     "@angular/compiler": "5.2.0",

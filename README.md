@@ -1,4 +1,4 @@
-# ng2-currency-mask
+# ionicng2-currency-mask
 
 A very simple currency mask directive for Angular that allows using a number attribute with the ngModel. In other words, the model is a number, and not a string with a mask. It was tested in Angular version 4 and 5.
 
@@ -17,7 +17,7 @@ Install the package by command:
 Import the module
 
 ```ts
-import { CurrencyMaskModule } from "ng2-currency-mask";
+import { CurrencyMaskModule } from "ionicng2-currency-mask";
 
 @NgModule({
     imports: [
