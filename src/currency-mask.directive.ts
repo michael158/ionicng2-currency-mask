@@ -46,14 +46,14 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
 
     ngAfterViewInit() {
         setTimeout(() => {
-            //this.elementRef.nativeElement.children.style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
+            this.elementRef.nativeElement.children[0].style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
         },0);
     }
 
     ngDoCheck() {
         if (this.keyValueDiffer.diff(this.options)) {
             setTimeout(() => {
-                //this.elementRef.nativeElement.children.style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
+                this.elementRef.nativeElement.children[0].style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
                 this.inputHandler.updateOptions((<any>Object).assign({}, this.optionsTemplate, this.options));
             },0);
         }
@@ -62,8 +62,8 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     ngOnInit() {
         setTimeout(() => {
             console.log(this.elementRef.nativeElement)
-            console.log(this.elementRef.nativeElement.children);
-            this.inputHandler = new InputHandler(this.elementRef.nativeElement.children, (<any>Object).assign({}, this.optionsTemplate, this.options));
+            console.log(this.elementRef.nativeElement.children[0]);
+            this.inputHandler = new InputHandler(this.elementRef.nativeElement.children[0], (<any>Object).assign({}, this.optionsTemplate, this.options));
         },0)
     }
 
@@ -132,7 +132,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     }
 
     setDisabledState(value: boolean): void {
-        this.elementRef.nativeElement.children.disabled = value;
+        this.elementRef.nativeElement.children[0].disabled = value;
     }
 
     validate(abstractControl: AbstractControl): { [key: string]: any; } {
