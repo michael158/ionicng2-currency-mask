@@ -21,7 +21,7 @@ export class InputHandler {
         }
     }
 
-    handleCut(event: any): void {
+    handleCut(event: any, ngModel?:any): void {
         if (this.isReadOnly()) {
             return;
         }
@@ -32,10 +32,13 @@ export class InputHandler {
 
             if(this.onModelChange)
                 this.onModelChange(this.inputService.value);
+            
+            if(ngModel)
+                ngModel.update.emit(this.inputService.value);
         }, 0);
     }
 
-    handleInput(event: any): void {
+    handleInput(event: any, ngModel?:any): void {
         if (this.isReadOnly()) {
             return;
         }
@@ -81,9 +84,12 @@ export class InputHandler {
 
         if(this.onModelChange)
             this.onModelChange(this.inputService.value);
+        
+        if(ngModel)    
+           ngModel.update.emit(this.inputService.value);
     }
 
-    handleKeydown(event: any): void {
+    handleKeydown(event: any, ngModel?:any): void {
         if (this.isReadOnly()) {
             return;
         }
@@ -99,6 +105,9 @@ export class InputHandler {
 
                 if(this.onModelChange)
                   this.onModelChange(this.inputService.value);
+
+                if(ngModel)
+                    ngModel.update.emit(this.inputService.value);  
             }
 
             if (selectionRangeLength == 0 && !isNaN(this.inputService.value)) {
@@ -106,6 +115,9 @@ export class InputHandler {
 
                 if(this.onModelChange)
                     this.onModelChange(this.inputService.value);
+
+                if(ngModel)
+                    ngModel.update.emit(this.inputService.value);    
             }
 
             if ((keyCode === 8 || keyCode === 46) && selectionRangeLength != 0 && !isNaN(this.inputService.value)) {
@@ -113,11 +125,14 @@ export class InputHandler {
 
                 if(this.onModelChange)
                     this.onModelChange(this.inputService.value);
+
+                if(ngModel)
+                    ngModel.update.emit(this.inputService.value);    
             }
         }
     }
 
-    handleKeypress(event: any): void {
+    handleKeypress(event: any, ngModel?:any): void {
         if (this.isReadOnly()) {
             return;
         }
@@ -145,13 +160,16 @@ export class InputHandler {
 
         if(this.onModelChange)
             this.onModelChange(this.inputService.value);
+
+        if(ngModel)
+            ngModel.update.emit(this.inputService.value);    
     }
 
     handleKeyup(event: any): void {
         this.inputService.fixCursorPosition();
     }
 
-    handlePaste(event: any): void {
+    handlePaste(event: any, ngModel?:any): void {
         if (this.isReadOnly()) {
             return;
         }
@@ -162,6 +180,9 @@ export class InputHandler {
 
             if(this.onModelChange)
                  this.onModelChange(this.inputService.value);
+
+            if(ngModel)
+              ngModel.update.emit(this.inputService.value);     
         }, 1);
     }
 

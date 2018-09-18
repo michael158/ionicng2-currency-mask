@@ -111,14 +111,20 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     @HostListener("cut", ["$event"])
     handleCut(event: any) {
         if (!this.isChromeAndroid()) {
-            this.inputHandler.handleCut(event);
+            if(this.isIonic)
+                this.inputHandler.handleCut(event, this.ngModel);
+            else
+                this.inputHandler.handleCut(event); 
         }
     }
 
     @HostListener("input", ["$event"])
     handleInput(event: any) {
         if (this.isChromeAndroid()) {
-            this.inputHandler.handleInput(event);
+            if(this.isIonic)
+                this.inputHandler.handleInput(event, this.ngModel);
+            else    
+               this.inputHandler.handleInput(event);
         }
     }
 
