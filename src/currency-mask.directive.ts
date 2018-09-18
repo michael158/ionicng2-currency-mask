@@ -13,8 +13,6 @@ export const CURRENCYMASKDIRECTIVE_VALUE_ACCESSOR: any = {
 @Directive({
     selector: "[currencyMask]",
     providers: [
-        CURRENCYMASKDIRECTIVE_VALUE_ACCESSOR,
-        { provide: NG_VALIDATORS, useExisting: CurrencyMaskDirective, multi: true },
         NgModel
     ]
 })
