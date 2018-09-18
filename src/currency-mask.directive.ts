@@ -22,6 +22,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     @Input() max: number;
     @Input() min: number;
     @Input() options: any = {};
+    @Input() ngModel: any;
 
     inputHandler: InputHandler;
     keyValueDiffer: KeyValueDiffer<any, any>;
@@ -69,7 +70,11 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
 
     @HostListener("blur", ["$event"])
     handleBlur(event: any) {
-        //this.inputHandler.getOnModelTouched().apply(event);
+
+        console.log(event);
+        console.log(this.inputHandler.getOnModelTouched());
+
+        this.inputHandler.getOnModelTouched().apply(event);
     }
 
     @HostListener("click", ["$event"])
