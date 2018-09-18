@@ -34,7 +34,7 @@ export class InputHandler {
                 this.onModelChange(this.inputService.value);
             
             if(ngModel)
-                ngModel.update.emit(this.inputService.value);
+                ngModel.emit(this.inputService.value);
         }, 0);
     }
 
@@ -86,7 +86,7 @@ export class InputHandler {
             this.onModelChange(this.inputService.value);
         
         if(ngModel)    
-           ngModel.update.emit(this.inputService.value);
+           ngModel.emit(this.inputService.value);
     }
 
     handleKeydown(event: any, ngModel?:any): void {
@@ -107,7 +107,7 @@ export class InputHandler {
                   this.onModelChange(this.inputService.value);
 
                 if(ngModel)
-                    ngModel.update.emit(this.inputService.value);  
+                    ngModel.emit(this.inputService.value);  
             }
 
             if (selectionRangeLength == 0 && !isNaN(this.inputService.value)) {
@@ -117,7 +117,7 @@ export class InputHandler {
                     this.onModelChange(this.inputService.value);
 
                 if(ngModel)
-                    ngModel.update.emit(this.inputService.value);    
+                    ngModel.emit(this.inputService.value);    
             }
 
             if ((keyCode === 8 || keyCode === 46) && selectionRangeLength != 0 && !isNaN(this.inputService.value)) {
@@ -127,7 +127,7 @@ export class InputHandler {
                     this.onModelChange(this.inputService.value);
 
                 if(ngModel)
-                    ngModel.update.emit(this.inputService.value);    
+                    ngModel.emit(this.inputService.value);    
             }
         }
     }
@@ -162,7 +162,7 @@ export class InputHandler {
             this.onModelChange(this.inputService.value);
 
         if(ngModel)
-            ngModel.update.emit(this.inputService.value);    
+            ngModel.emit(this.inputService.value);    
     }
 
     handleKeyup(event: any): void {
@@ -182,7 +182,7 @@ export class InputHandler {
                  this.onModelChange(this.inputService.value);
 
             if(ngModel)
-              ngModel.update.emit(this.inputService.value);     
+              ngModel.emit(this.inputService.value);     
         }, 1);
     }
 
