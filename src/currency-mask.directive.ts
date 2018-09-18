@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, DoCheck, ElementRef, forwardRef, HostListener, Inject, KeyValueDiffer, KeyValueDiffers, Input, OnInit, Optional } from "@angular/core";
+import { AfterViewInit, Directive, DoCheck, ElementRef, forwardRef, HostListener, Inject, KeyValueDiffer, KeyValueDiffers, Input, OnInit, Optional ,Injector} from "@angular/core";
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator,NgModel } from "@angular/forms";
 
 import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from "./currency-mask.config";
@@ -13,7 +13,8 @@ export const CURRENCYMASKDIRECTIVE_VALUE_ACCESSOR: any = {
 @Directive({
     selector: "[currencyMask]",
     providers: [
-        NgModel
+        CURRENCYMASKDIRECTIVE_VALUE_ACCESSOR,
+        { provide: NG_VALIDATORS, useExisting: CurrencyMaskDirective, multi: true },
     ]
 })
 export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccessor, DoCheck, OnInit, Validator {
@@ -25,6 +26,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     inputHandler: InputHandler;
     keyValueDiffer: KeyValueDiffer<any, any>;
     isIonic: any;
+    ngModel:any;
 
     optionsTemplate = {
         align: "right",
@@ -37,11 +39,12 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
         isIonic:false
     };
 
-    constructor(@Optional() @Inject(CURRENCY_MASK_CONFIG) private currencyMaskConfig: CurrencyMaskConfig, private elementRef: ElementRef, private keyValueDiffers: KeyValueDiffers, private ngModel: NgModel) {
+    constructor(@Optional() @Inject(CURRENCY_MASK_CONFIG) private currencyMaskConfig: CurrencyMaskConfig, private elementRef: ElementRef, private keyValueDiffers: KeyValueDiffers, private injector: Injector) {
         if (currencyMaskConfig) {
             this.optionsTemplate = currencyMaskConfig;
         }
 
+        this.ngModel = this.injector.get(NgModel);
 
 
         this.keyValueDiffer = keyValueDiffers.find({}).create();
