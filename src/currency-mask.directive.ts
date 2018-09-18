@@ -53,7 +53,9 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
 
     ngDoCheck() {
         if (this.keyValueDiffer.diff(this.options)) {
-            this.elementRef.nativeElement.children.style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
+            setTimeout(() => {
+                this.elementRef.nativeElement.children.style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
+            })
             this.inputHandler.updateOptions((<any>Object).assign({}, this.optionsTemplate, this.options));
         }
     }
