@@ -31,17 +31,16 @@ export class InputHandler {
             this.inputService.updateFieldValue();
             this.setValue(this.inputService.value);
 
-            this.inputService.value == null ? 0 : this.inputService.value
-
             if(this.onModelChange)
                 this.onModelChange(this.inputService.value);
             
             if(ngModelMoney)
                 ngModelMoney.emit(this.inputService.value);
                 
-            if(this.ngModel)
+            if(this.ngModel){
+                this.inputService.value == null ? 0 : this.inputService.value
                 this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));   
-            
+            }
                 
         }, 0);
     }
@@ -90,8 +89,6 @@ export class InputHandler {
 
         this.setCursorPosition(event);
 
-        this.inputService.value == null ? 0 : this.inputService.value;
-
         if(this.onModelChange)
             this.onModelChange(this.inputService.value);
         
@@ -99,6 +96,7 @@ export class InputHandler {
            ngModelMoney.emit(this.inputService.value);
 
         if(this.ngModel){
+            this.inputService.value == null ? 0 : this.inputService.value;
             this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));    
         }
     }
@@ -117,8 +115,6 @@ export class InputHandler {
             if (selectionRangeLength == this.inputService.rawValue.length || this.inputService.value == 0) {
                 this.setValue(null);
 
-                this.inputService.value == null ? 0 : this.inputService.value;
-
                 if(this.onModelChange)
                   this.onModelChange(this.inputService.value);
 
@@ -128,7 +124,6 @@ export class InputHandler {
 
             if (selectionRangeLength == 0 && !isNaN(this.inputService.value)) {
                 this.inputService.removeNumber(keyCode);
-                this.inputService.value == null ? 0 : this.inputService.value;
 
                 if(this.onModelChange)
                     this.onModelChange(this.inputService.value);
@@ -137,14 +132,13 @@ export class InputHandler {
                     ngModelMoney.emit(this.inputService.value);    
                 
                 if(this.ngModel){
+                    this.inputService.value == null ? 0 : this.inputService.value;
                     this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));      
                 }
             }
 
             if ((keyCode === 8 || keyCode === 46) && selectionRangeLength != 0 && !isNaN(this.inputService.value)) {
                 this.inputService.removeNumber(keyCode);
-
-                this.inputService.value == null ? 0 : this.inputService.value
 
                 if(this.onModelChange)
                     this.onModelChange(this.inputService.value);
@@ -153,6 +147,7 @@ export class InputHandler {
                     ngModelMoney.emit(this.inputService.value);
                     
                 if(this.ngModel){
+                    this.inputService.value == null ? 0 : this.inputService.value;
                     this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));      
                 }    
             }
@@ -185,8 +180,6 @@ export class InputHandler {
 
         event.preventDefault();
 
-        this.inputService.value == null ? 0 : this.inputService.value
-
         if(this.onModelChange)
             this.onModelChange(this.inputService.value);
 
@@ -194,8 +187,9 @@ export class InputHandler {
             ngModelMoney.emit(this.inputService.value);   
         
         if(this.ngModel){
+            this.inputService.value == null ? 0 : this.inputService.value;
             this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));      
-        }
+            }
     }
 
     handleKeyup(event: any): void {
@@ -211,8 +205,6 @@ export class InputHandler {
             this.inputService.updateFieldValue();
             this.setValue(this.inputService.value);
 
-            this.inputService.value == null ? 0 : this.inputService.value
-
             if(this.onModelChange)
                  this.onModelChange(this.inputService.value);
 
@@ -220,8 +212,9 @@ export class InputHandler {
               ngModelMoney.emit(this.inputService.value);
             
             if(this.ngModel){
-                this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));      
-            } 
+                this.inputService.value == null ? 0 : this.inputService.value;
+                this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));   
+            }
         }, 1);
     }
 
