@@ -128,4 +128,6 @@ export class...
     }
 ```
 
-## Questions? Open a Issue!
+## Based on the library by Cesarrew ng2-currency-mask
+https://github.com/cesarrew/ng2-currency-mask
+
