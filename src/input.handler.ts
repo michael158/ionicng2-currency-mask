@@ -37,7 +37,7 @@ export class InputHandler {
             if(ngModelMoney)
                 ngModelMoney.emit(this.inputService.value);
 
-            if(this.ngModel)
+            if(this.ngModel && this.inputService.value)
                 this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));    
         }, 0);
     }
@@ -92,7 +92,7 @@ export class InputHandler {
         if(ngModelMoney)    
            ngModelMoney.emit(this.inputService.value);
 
-        if(this.ngModel)
+        if(this.ngModel && this.inputService.value)
            this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));    
     }
 
@@ -126,7 +126,7 @@ export class InputHandler {
                 if(ngModelMoney)
                     ngModelMoney.emit(this.inputService.value);    
                 
-                if(this.ngModel)
+                if(this.ngModel && this.inputService.value)
                    this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));      
             }
 
@@ -139,7 +139,7 @@ export class InputHandler {
                 if(ngModelMoney)
                     ngModelMoney.emit(this.inputService.value);
                     
-                if(this.ngModel)
+                if(this.ngModel && this.inputService.value)
                     this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));     
             }
         }
@@ -177,7 +177,7 @@ export class InputHandler {
         if(ngModelMoney)
             ngModelMoney.emit(this.inputService.value);   
         
-        if(this.ngModel)
+        if(this.ngModel && this.inputService.value)
             this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString())); 
     }
 
@@ -200,7 +200,7 @@ export class InputHandler {
             if(ngModelMoney)
               ngModelMoney.emit(this.inputService.value);
             
-            if(this.ngModel)
+            if(this.ngModel && this.inputService.value)
               this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));   
         }, 1);
     }
