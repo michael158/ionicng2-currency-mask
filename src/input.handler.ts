@@ -38,7 +38,7 @@ export class InputHandler {
                 ngModelMoney.emit(this.inputService.value);
                 
             if(this.ngModel){
-                this.inputService.value == null ? 0 : this.inputService.value
+                this.inputService.value = this.inputService.value == null ? 0 : this.inputService.value;
                 this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));   
             }
                 
@@ -96,7 +96,7 @@ export class InputHandler {
            ngModelMoney.emit(this.inputService.value);
 
         if(this.ngModel){
-            this.inputService.value == null ? 0 : this.inputService.value;
+            this.inputService.value = this.inputService.value == null ? 0 : this.inputService.value;
             this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));    
         }
     }
@@ -132,7 +132,7 @@ export class InputHandler {
                     ngModelMoney.emit(this.inputService.value);    
                 
                 if(this.ngModel){
-                    this.inputService.value == null ? 0 : this.inputService.value;
+                    this.inputService.value = this.inputService.value == null ? 0 : this.inputService.value;
                     this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));      
                 }
             }
@@ -147,7 +147,7 @@ export class InputHandler {
                     ngModelMoney.emit(this.inputService.value);
                     
                 if(this.ngModel){
-                    this.inputService.value == null ? 0 : this.inputService.value;
+                    this.inputService.value = this.inputService.value == null ? 0 : this.inputService.value;
                     this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));      
                 }    
             }
@@ -187,7 +187,7 @@ export class InputHandler {
             ngModelMoney.emit(this.inputService.value);   
         
         if(this.ngModel){
-            this.inputService.value == null ? 0 : this.inputService.value;
+            this.inputService.value = this.inputService.value == null ? 0 : this.inputService.value;
             this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));      
             }
     }
@@ -212,7 +212,7 @@ export class InputHandler {
               ngModelMoney.emit(this.inputService.value);
             
             if(this.ngModel){
-                this.inputService.value == null ? 0 : this.inputService.value;
+                this.inputService.value = this.inputService.value == null ? 0 : this.inputService.value;
                 this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));   
             }
         }, 1);
