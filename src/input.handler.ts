@@ -36,9 +36,12 @@ export class InputHandler {
             
             if(ngModelMoney)
                 ngModelMoney.emit(this.inputService.value);
-
-            if(this.ngModel && this.inputService.value)
-                this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));    
+                
+            if(this.ngModel){
+                this.inputService.value == null ? 0 : this.inputService.value
+                this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));   
+            }
+                
         }, 0);
     }
 
@@ -92,8 +95,10 @@ export class InputHandler {
         if(ngModelMoney)    
            ngModelMoney.emit(this.inputService.value);
 
-        if(this.ngModel && this.inputService.value)
-           this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));    
+        if(this.ngModel){
+            this.inputService.value == null ? 0 : this.inputService.value;
+            this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));    
+        }
     }
 
     handleKeydown(event: any, ngModelMoney?:any): void {
@@ -126,8 +131,10 @@ export class InputHandler {
                 if(ngModelMoney)
                     ngModelMoney.emit(this.inputService.value);    
                 
-                if(this.ngModel && this.inputService.value)
-                   this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));      
+                if(this.ngModel){
+                    this.inputService.value == null ? 0 : this.inputService.value;
+                    this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));      
+                }
             }
 
             if ((keyCode === 8 || keyCode === 46) && selectionRangeLength != 0 && !isNaN(this.inputService.value)) {
@@ -139,8 +146,10 @@ export class InputHandler {
                 if(ngModelMoney)
                     ngModelMoney.emit(this.inputService.value);
                     
-                if(this.ngModel && this.inputService.value)
-                    this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));     
+                if(this.ngModel){
+                    this.inputService.value == null ? 0 : this.inputService.value;
+                    this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));      
+                }    
             }
         }
     }
@@ -177,8 +186,10 @@ export class InputHandler {
         if(ngModelMoney)
             ngModelMoney.emit(this.inputService.value);   
         
-        if(this.ngModel && this.inputService.value)
-            this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString())); 
+        if(this.ngModel){
+            this.inputService.value == null ? 0 : this.inputService.value;
+            this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));      
+        }
     }
 
     handleKeyup(event: any): void {
@@ -200,8 +211,10 @@ export class InputHandler {
             if(ngModelMoney)
               ngModelMoney.emit(this.inputService.value);
             
-            if(this.ngModel && this.inputService.value)
-              this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));   
+            if(this.ngModel){
+                this.inputService.value == null ? 0 : this.inputService.value;
+                this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));      
+            } 
         }, 1);
     }
 
