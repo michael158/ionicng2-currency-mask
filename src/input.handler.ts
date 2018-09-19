@@ -6,6 +6,7 @@ export class InputHandler {
     private onModelChange: Function;
     private onModelTouched: Function;
     private htmlInputElement: HTMLInputElement;
+    private ngModel:any;
 
     constructor(htmlInputElement: HTMLInputElement, options: any) {
         this.inputService = new InputService(htmlInputElement, options);
@@ -21,7 +22,7 @@ export class InputHandler {
         }
     }
 
-    handleCut(event: any, ngModel?:any): void {
+    handleCut(event: any, ngModelMoney?:any): void {
         if (this.isReadOnly()) {
             return;
         }
@@ -33,12 +34,15 @@ export class InputHandler {
             if(this.onModelChange)
                 this.onModelChange(this.inputService.value);
             
-            if(ngModel)
-                ngModel.emit(this.inputService.value);
+            if(ngModelMoney)
+                ngModelMoney.emit(this.inputService.value);
+
+            if(this.ngModel)
+                this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));    
         }, 0);
     }
 
-    handleInput(event: any, ngModel?:any): void {
+    handleInput(event: any, ngModelMoney?:any): void {
         if (this.isReadOnly()) {
             return;
         }
@@ -85,11 +89,14 @@ export class InputHandler {
         if(this.onModelChange)
             this.onModelChange(this.inputService.value);
         
-        if(ngModel)    
-           ngModel.emit(this.inputService.value);
+        if(ngModelMoney)    
+           ngModelMoney.emit(this.inputService.value);
+
+        if(this.ngModel)
+           this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));    
     }
 
-    handleKeydown(event: any, ngModel?:any): void {
+    handleKeydown(event: any, ngModelMoney?:any): void {
         if (this.isReadOnly()) {
             return;
         }
@@ -106,8 +113,8 @@ export class InputHandler {
                 if(this.onModelChange)
                   this.onModelChange(this.inputService.value);
 
-                if(ngModel)
-                    ngModel.emit(this.inputService.value);  
+                if(ngModelMoney)
+                    ngModelMoney.emit(this.inputService.value);  
             }
 
             if (selectionRangeLength == 0 && !isNaN(this.inputService.value)) {
@@ -116,8 +123,11 @@ export class InputHandler {
                 if(this.onModelChange)
                     this.onModelChange(this.inputService.value);
 
-                if(ngModel)
-                    ngModel.emit(this.inputService.value);    
+                if(ngModelMoney)
+                    ngModelMoney.emit(this.inputService.value);    
+                
+                if(this.ngModel)
+                   this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));      
             }
 
             if ((keyCode === 8 || keyCode === 46) && selectionRangeLength != 0 && !isNaN(this.inputService.value)) {
@@ -126,13 +136,16 @@ export class InputHandler {
                 if(this.onModelChange)
                     this.onModelChange(this.inputService.value);
 
-                if(ngModel)
-                    ngModel.emit(this.inputService.value);    
+                if(ngModelMoney)
+                    ngModelMoney.emit(this.inputService.value);
+                    
+                if(this.ngModel)
+                    this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));     
             }
         }
     }
 
-    handleKeypress(event: any, ngModel?:any): void {
+    handleKeypress(event: any, ngModelMoney?:any): void {
         if (this.isReadOnly()) {
             return;
         }
@@ -161,15 +174,18 @@ export class InputHandler {
         if(this.onModelChange)
             this.onModelChange(this.inputService.value);
 
-        if(ngModel)
-            ngModel.emit(this.inputService.value);    
+        if(ngModelMoney)
+            ngModelMoney.emit(this.inputService.value);   
+        
+        if(this.ngModel)
+            this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString())); 
     }
 
     handleKeyup(event: any): void {
         this.inputService.fixCursorPosition();
     }
 
-    handlePaste(event: any, ngModel?:any): void {
+    handlePaste(event: any, ngModelMoney?:any): void {
         if (this.isReadOnly()) {
             return;
         }
@@ -181,8 +197,11 @@ export class InputHandler {
             if(this.onModelChange)
                  this.onModelChange(this.inputService.value);
 
-            if(ngModel)
-              ngModel.emit(this.inputService.value);     
+            if(ngModelMoney)
+              ngModelMoney.emit(this.inputService.value);
+            
+            if(this.ngModel)
+              this.ngModel.update.emit(this.getMaskedValue(this.inputService.value.toString()));   
         }, 1);
     }
 
@@ -192,6 +211,11 @@ export class InputHandler {
 
     getOnModelChange(): Function {
         return this.onModelChange;
+    }
+
+    setNgModel(ngModel: any)
+    {
+        this.ngModel = ngModel;
     }
 
     setOnModelChange(callbackFunction: Function): void {

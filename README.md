@@ -11,7 +11,7 @@ Note: This component is ready to AoC (Ahead-of-Time) compilation.
 Install the package by command:
 
 ```sh
-    npm install ionic-currency-mask --save
+    npm install ionicng2-currency-mask --save
 ```
 
 Import the module
@@ -33,7 +33,7 @@ export class AppModule {}
 ### Using 
 
 ```html
-    <ion-input currencyMask [(ngModel)]="value" />
+    <ion-input currencyMask [(ngModel)]="value" [(ngModelMoney)]="value2" />
 ```
 
  * `ngModel` An attribute of type number. If is displayed `'$ 25.63'`, the attribute will be `'25.63'`.

@@ -79,6 +79,9 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
         this.isIonic = this.options.isIonic ? this.options.isIonic : this.optionsTemplate.isIonic;
         this.ngModel = this.injector.get(NgModel);
 
+        if(this.ngModel)
+            this.inputHandler.setNgModel(this.ngModel);
+
 
         if(this.isIonic){
             setTimeout(() => {
@@ -92,10 +95,6 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     @HostListener("blur", ["$event"])
     handleBlur(event: any) {
         if(this.isIonic){
-            console.log(event);
-            console.log(this.ngModel);
-            console.log(this.inputHandler.getValue());
-            //this.ngModelMoneyChange.emit(this.inputHandler.getValue());
             this.ngModel.update.emit(this.inputHandler.getMaskedValue(this.ngModelMoney));
         }else{
             this.inputHandler.getOnModelTouched().apply(event);
