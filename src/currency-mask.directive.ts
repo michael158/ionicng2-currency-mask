@@ -50,7 +50,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     }
 
     ngAfterViewInit() {
-        this.isIonic = this.options.isIonic ? this.options.isIonic : this.optionsTemplate.isIonic;
+        this.isIonic = this.elementRef.nativeElement.children != undefined ? true : false;
         
         if(this.isIonic){
             setTimeout(() => {
@@ -76,19 +76,19 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
     }
 
     ngOnInit() {
-        this.isIonic = this.options.isIonic ? this.options.isIonic : this.optionsTemplate.isIonic;
+        this.isIonic = this.elementRef.nativeElement.children != undefined ? true : false;
         this.ngModel = this.injector.get(NgModel);
-
-        if(this.ngModel)
-            this.inputHandler.setNgModel(this.ngModel);
-
 
         if(this.isIonic){
             setTimeout(() => {
                 this.inputHandler = new InputHandler(this.elementRef.nativeElement.children[0], (<any>Object).assign({}, this.optionsTemplate, this.options));
+                if(this.ngModel)
+                     this.inputHandler.setNgModel(this.ngModel);
             },0)
         }else{
             this.inputHandler = new InputHandler(this.elementRef.nativeElement, (<any>Object).assign({}, this.optionsTemplate, this.options));
+            if(this.ngModel)
+                 this.inputHandler.setNgModel(this.ngModel);
         }
     }
 
